@@ -1,0 +1,327 @@
+html,body{
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Roboto Light", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+
+    color: black;
+    padding: 10px 0;
+    display: flex; /* Cambiado para usar flexbox */
+    align-items: center;
+    justify-content: center; /* Centra el contenido en el eje horizontal */
+}
+
+header img {
+    max-width: 100px;
+    height: 71px;
+}
+
+header h1 {
+    margin: 0;
+    flex-grow: 1; /* Permite que el h1 ocupe el espacio restante */
+    text-align: center; /* Centra el texto dentro del espacio disponible */
+}
+
+/* Navbar */
+nav {
+    background: linear-gradient(to right, #1f3b3c, #152C2D);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Content */
+.content {
+    flex: 1; /* Hace que el contenido ocupe el espacio restante */
+    padding: 20px;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ajuste responsivo para filas */
+.form-row, .form-row-2 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group, .form-group-2 {
+    width: 48%;
+}
+
+.form-group label,
+.form-group-2 label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group-2 textarea,
+.form-group-2 input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-group-2 textarea {
+    height: 100px;
+}
+
+.btn {
+    background: linear-gradient(to right, #1f3b3c, #152C2D);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #346364, #10494B);
+}
+
+/* Vista previa de la imagen */
+.img-preview {
+    margin-top: 10px;
+    width: 100%; /* Ajusta el ancho completo en móviles */
+    position: relative;
+}
+
+.img-preview img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    display: none; /* Inicialmente, la imagen no es visible */
+    cursor: pointer;
+}
+
+/* Estilos para zoom */
+.zoomed-img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    max-height: 80%;
+    z-index: 999;
+    display: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    display: none;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #1f3b3c, #152C2D);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .form-row, .form-row-2 {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-group, .form-group-2 {
+        width: 100%; /* Cada campo ocupa el 100% en pantallas pequeñas */
+    }
+
+    .img-preview {
+        width: 100%; /* Asegura que la vista previa sea de ancho completo en móviles */
+    }
+}
+
+table {
+    width: 80%; /* Ajusta el ancho según tu preferencia */
+    margin: 0 auto; /* Centrar horizontalmente */
+    border-collapse: collapse;
+}
+
+div {
+    margin-top: 15px;
+}
+
+/* Historial de solicitudes */
+
+/* Estilo del cuadro de búsqueda */
+#searchInput {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Estilo del botón de búsqueda */
+#searchButton {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la tabla */
+#solicitudesTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo de las celdas y encabezados */
+#solicitudesTable th, #solicitudesTable td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Encabezado de la tabla con fondo y texto destacado */
+#solicitudesTable th {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+/* Alternar color de las filas */
+#solicitudesTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Resaltar la fila al pasar el cursor */
+#solicitudesTable tr:hover {
+    background-color: #ddd;
+}
+
+/* Resaltar la columna del encabezado en hover */
+#solicitudesTable th:hover {
+    background-color: #45a049;
+}
+/* Tamaño de la imagen */
+.problem-image {
+    width: 100px;
+    height: auto;
+}
+
+.cancel-button {
+    width: 40px;
+    height: 40px;
+}
+
+/* Estilos para alinear el campo de búsqueda y el botón */
+.search-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    gap: 10px; /* Espacio entre el input y el botón */
+    margin-bottom: 12px; /* Margen inferior para el contenedor */
+}
+
+#searchInput {
+    flex: 1; /* Ocupa todo el espacio restante */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #45a049;
+}
+
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo para que se mantenga en la pantalla */
+    z-index: 1; /* Asegúrate de que esté por encima del contenido */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Agrega barra de desplazamiento si es necesario */
+    background-color: rgb(0,0,0); /* Color de fondo con opacidad */
+    background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del modal */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    margin: 5px;
+}

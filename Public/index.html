@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSTI_Solicitudes</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <ul>
+        <li><a href="index.html">Página de formulario</a></li>
+        <li><a href="listaSolicitudes.html">Historial de solicitudes</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header>
+    <img src="imagenes/csti_logo.png" alt="logo csti">
+    <h1>Formulario de Solicitud</h1>
+    <img src="imagenes/escudo_unison.png" alt="logo unison">
+</header>
+
+
+
+<!-- Content -->
+<div class="content">
+    <form action="/validar" method="post" class="form-container">
+        <!-- Nombre y Selección de Aula en la misma fila -->
+        <div class="form-row">
+            <!-- Nombre -->
+            <div class="form-group">
+                <label for="expedienteProfesor">Expediente del profesor:</label>
+                <input type="text" id="expedienteProfesor" name="expedienteProfesor" placeholder="Número del expediente del profesor" required>
+            </div>
+
+            <!-- Selección de Aula -->
+            <div class="form-group">
+                <label for="aula">Seleccionar Aula:</label>
+                <select id="aula" name="aula" required>
+                    <option value="">Selecciona una aula</option>
+                    <option value="aula201_5G">Aula 201 5G</option>
+                    <option value="aula202_5G">Aula 202 5G</option>
+                    <option value="aula203_5G">Aula 203 5G</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Descripción del problema y Subir Imagen en la misma fila -->
+        <div class="form-row-2">
+            <!-- Descripción del problema -->
+            <div class="form-group-2">
+                <label for="descripcion">Descripción del problema:</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Escribe aquí la descripción del problema" required></textarea>
+            </div>
+
+            <!-- Subir Imagen -->
+            <div class="form-group-2">
+                <label for="imagen"></label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
+
+                <!-- Vista previa de la imagen -->
+                <div class="img-preview">
+                    <img id="imagenPreview" src="#" alt="Vista previa de la imagen">
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón Enviar -->
+        <button type="submit" class="btn">Enviar</button>
+    </form>
+</div>
+
+<!-- Imagen para el zoom y el overlay -->
+<div class="overlay" id="overlay"></div>
+<img id="zoomedImage" class="zoomed-img" src="#" alt="Zoomed image">
+
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 CSTI.</p>
+</footer>
+
+<!-- Código -->
+<script src="code.js"></script>
+
+</body>
+</html>
