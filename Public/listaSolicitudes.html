@@ -25,136 +25,37 @@
 </header>
 
 <!-- Contenido principal -->
-<div class="content">
-
-  <!-- Tabla de solicitudes -->
-  <div class="search-container">
-    <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Buscar por identificador">
-    <button id="searchButton" onclick="filterTable()">Buscar</button>
-  </div>
-
-  <table id="solicitudesTable" border="1">
-    <thead>
-    <tr>
-      <th onclick="sortTable(0)">Identificador</th>
-      <th onclick="sortTable(1)">Nombre del solicitante</th>
-      <th onclick="sortTable(2)">Aula</th>
-      <th onclick="sortTable(3)">Descripción del problema</th>
-      <th onclick="sortTable(4)">Fecha y Hora</th>
-      <th>Imagen</th>
-      <th>Cancelar</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>1234D12</td>
-      <td>Juan Pérez</td>
-      <td>Aula 203 5G</td>
-      <td>Problema con el proyector</td>
-      <td>2024-09-09 10:30</td>
-      <td><img src="" alt="" class="problem-image"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>3456G43</td>
-      <td>Ana López</td>
-      <td>Aula 201 5G</td>
-      <td>Computadora no enciende</td>
-      <td>2024-09-08 14:45</td>
-      <td><img src="" alt="" class="problem-image"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>8765F65</td>
-      <td>Pedro González</td>
-      <td>Aula 202 5G</td>
-      <td>No hay conexión a internet</td>
-      <td>2024-09-07 09:15</td>
-      <td><img src="" alt="" class="problem-image"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>8765F65</td>
-      <td>Pedro González</td>
-      <td>Aula 203 5G</td>
-      <td>Se cayó el proyector</td>
-      <td>2024-09-17 07:45</td>
-      <td><img src="https://www.proyectoresindigo.com/wp-content/uploads/2018/06/PRnCe.jpg" alt="Se cayó el proyector" class="problem-image"></td>
-      <td><img src="..imagenes/cancel_button.png" alt="cancel-button" class="cancel-button" id="specific-cancel-button"> </td>
-    </tr>
-    <tr>
-      <td>8765F65</td>
-      <td>Pedro González</td>
-      <td>Aula 201 5G</td>
-      <td>Se conectó un HDMI y no funciona</td>
-      <td>2024-08-12 12:18</td>
-      <td><img src="" alt="" class="problem-image"></td>
-      <td></td>
-    </tr>
-    </tbody>
-  </table>
-
-  <!-- Modal -->
-  <div id="cancel-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>¿Estás seguro de que quieres cancelar la solicitud?</p>
-      <label for="cancel-reason">Razón:</label>
-      <textarea id="cancel-reason" rows="4" cols="50"></textarea>
-      <br>
-      <button id="confirm-cancel">Sí</button>
-      <button id="cancel-close">No</button>
-    </div>
-  </div>
-
+<div class="search-container">
+  <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Buscar por identificador">
+  <button id="searchButton" onclick="filterTable()">Buscar</button>
 </div>
+
+<table id="data-table" border="1">
+  <thead>
+  <tr>
+    <th>Problema</th>
+    <th>Aula</th>
+    <th>Estatus</th>
+    <th>Hora</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Aquí se insertarán las filas dinámicamente -->
+  </tbody>
+</table>
 
 <!-- Footer -->
 <footer>
   <p>&copy; 2024 CSTI.</p>
 </footer>
 
+
+<!-- Lectura de datos de la DB -->
+<script src="datosDB.js" ></script>
 <!-- JavaScript para ordenar la tabla y buscador-->
-<script src="../../paginaCSTI/Public/paginas/code.js"></script>
-
-<script>
-  // Obtener el modal
-  var modal = document.getElementById("cancel-modal");
-
-  // Obtener el botón específico que abre el modal
-  var specificCancelButton = document.getElementById("specific-cancel-button");
-
-  // Obtener el elemento <span> que cierra el modal
-  var span = document.getElementsByClassName("close")[0];
-
-  // Cuando el usuario haga clic en el botón específico, abre el modal
-  specificCancelButton.onclick = function() {
-    modal.style.display = "block";
-  }
-
-  // Cuando el usuario haga clic en <span> (x), cierra el modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-
-  // Cuando el usuario haga clic fuera del contenido del modal, cierra el modal
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
-  // Manejar los botones de "Sí" y "No"
-  document.getElementById("confirm-cancel").onclick = function() {
-    // Aquí puedes agregar el código para manejar la confirmación de cancelación
-    alert("Solicitud cancelada.");
-    modal.style.display = "none";
-  }
-
-  document.getElementById("cancel-close").onclick = function() {
-    modal.style.display = "none";
-  }
-</script>
+<script src="code.js"></script>
+<!-- Modal -->
+<script src = "modal.js" ></script>
 
 </body>
 </html>

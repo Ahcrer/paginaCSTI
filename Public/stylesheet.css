@@ -1,6 +1,7 @@
 html,body{
     height: 100%;
     margin: 0;
+    padding: 0;
 }
 
 body {
@@ -9,6 +10,8 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
+    background-color: #f0f0f0;
+    height: 100vh;
 }
 
 /* Header */
@@ -19,11 +22,17 @@ header {
     display: flex; /* Cambiado para usar flexbox */
     align-items: center;
     justify-content: center; /* Centra el contenido en el eje horizontal */
+    margin-bottom: 20px;
 }
 
 header img {
     max-width: 100px;
     height: 71px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 header h1 {
@@ -56,9 +65,10 @@ nav ul li a {
 
 /* Content */
 .content {
-    flex: 1; /* Hace que el contenido ocupe el espacio restante */
-    padding: 20px;
+    flex: 1;
+    padding: 0;
     text-align: center;
+    margin-top: 20px;
 }
 
 .form-container {
@@ -112,6 +122,10 @@ nav ul li a {
     background: linear-gradient(to right, #346364, #10494B);
 }
 
+tbody tr:hover {
+    background-color: #f1f1f1;  /* Color de fondo al pasar el cursor por encima */
+}
+
 /* Vista previa de la imagen */
 .img-preview {
     margin-top: 10px;
@@ -157,8 +171,7 @@ footer {
     text-align: center;
     padding: 10px 0;
     width: 100%;
-    position: relative;
-    bottom: 0;
+    margin-top: auto;
 }
 
 /* Estilos responsivos */
@@ -175,18 +188,30 @@ footer {
     .img-preview {
         width: 100%; /* Asegura que la vista previa sea de ancho completo en móviles */
     }
+    table {
+        width: 100%;
+    }
+
 }
 
 table {
-    width: 80%; /* Ajusta el ancho según tu preferencia */
-    margin: 0 auto; /* Centrar horizontalmente */
+    width: 100%; /* Cambiado de 80% a 100% */
+    margin: 0 auto; /* Eliminar el margen superior */
     border-collapse: collapse;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 div {
     margin-top: 15px;
 }
 
+thead {
+    background-color: #4CAF50;  /* Color verde para la barra principal */
+    color: white;
+}
 /* Historial de solicitudes */
 
 /* Estilo del cuadro de búsqueda */
@@ -216,6 +241,14 @@ div {
     width: 100%;
     border-collapse: collapse;
     font-family: Arial, sans-serif;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;  /* Color de fondo alternado para las filas */
 }
 
 /* Estilo de las celdas y encabezados */
@@ -260,9 +293,10 @@ div {
 /* Estilos para alinear el campo de búsqueda y el botón */
 .search-container {
     display: flex;
-    align-items: center; /* Alinea verticalmente */
-    gap: 10px; /* Espacio entre el input y el botón */
-    margin-bottom: 12px; /* Margen inferior para el contenedor */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0; /* Eliminar margen inferior */
+    padding-bottom: 10px; /* Ajuste para un pequeño espaciado */
 }
 
 #searchInput {
@@ -280,10 +314,15 @@ div {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 #searchButton:hover {
     background-color: #45a049;
+}
+
+#data-table {
+    margin-top: 10px; /* Reducir el margen superior */
 }
 
 
