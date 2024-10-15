@@ -38,16 +38,29 @@ app.post("/validar", function (req, res) {
     let aula = datos.aula;
     let image = datos.imagen;
 
-    let registro = "insert into "
+    let validacionProfesor = "SELECT * FROM gestion_solicitudes.profesor WHERE num_institucional = '" + nombre + "';";
 
-    conexion.query(registro, function (err, result) {
+    conexion.query(validacionProfesor, function (err, result) {
         if (err) {
             throw err;
-        }else{
-            console.log("Datos almacenados correctamente");
+        } else if (result.length > 0) { // Verificamos si hay resultados
+            let id_prof = result[0].id_profesor; // Asumiendo que el campo se llama id_profesor
+            let registro = "INSERT INTO gestion_solicitudes.solicitud (id_profesor, fecha_hora_envio, aula, estatus, descripcion_problema) " +
+                "VALUES (" + id_prof + ", NOW(), '" + aula + "', 'PENDIENTE', '" + desc + "');";
+
+            conexion.query(registro, function (err, result) {
+                if (err) {
+                    throw err;
+                } else {
+                    res.send({ message: "Solicitud registrada correctamente" });
+                }
+            });
+        } else {
+            res.status(404).send({ message: "Profesor no encontrado" });
         }
-    })
-})
+    });
+});
+
 
 // :::::: Obtener datos de la DB :::::
 app.get('/data', (req, res) => {
@@ -59,6 +72,9 @@ app.get('/data', (req, res) => {
             return res.status(500).send({err});
         }else{
             res.json(result);
+            let num_inst = res["num_institucional"];
+            console.log(num_inst);
+            console.log(result);
         }
 
     })
@@ -74,12 +90,19 @@ function obtenerHoraActual() {
 
     const fecha = new Date();
 
-    const horas = fecha.getHours().toString().padStart(2, '0');
-    const minutos = fecha.getMinutes().toString().padStart(2, '0');
-    const segundos = fecha.getSeconds().toString().padStart(2, '0');
+    const anio = fecha.getFullYear();
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses en JS son de 0 a 11, por eso sumamos 1
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const horas = String(fecha.getHours()).padStart(2, '0');
+    const minutos = String(fecha.getMinutes()).padStart(2, '0');
+    const segundos = String(fecha.getSeconds()).padStart(2, '0');
 
-    return `${horas}:${minutos}:${segundos}`;
+    return `${anio}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
 
 }
 
 const horaActual = obtenerHoraActual();
+
+
+// ::::: PRUEBAS VALIDACIÓN PROFESOR ::::::
+
