@@ -38,25 +38,29 @@ app.post("/validar", function (req, res) {
     let aula = datos.aula;
     let image = datos.imagen;
 
+    console.log("Expediente recibido:", nombre);
+
     let validacionProfesor = "SELECT * FROM gestion_solicitudes.profesor WHERE num_institucional = '" + nombre + "';";
 
     conexion.query(validacionProfesor, function (err, result) {
         if (err) {
-            throw err;
-        } else if (result.length > 0) { // Verificamos si hay resultados
-            let id_prof = result[0].id_profesor; // Asumiendo que el campo se llama id_profesor
+            res.status(500).json({ message: "Error en la base de datos" });
+        } else if (result.length > 0) {
+            let id_prof = result[0].id_profesor;
             let registro = "INSERT INTO gestion_solicitudes.solicitud (id_profesor, fecha_hora_envio, aula, estatus, descripcion_problema) " +
                 "VALUES (" + id_prof + ", NOW(), '" + aula + "', 'PENDIENTE', '" + desc + "');";
 
             conexion.query(registro, function (err, result) {
                 if (err) {
-                    throw err;
+                    res.status(500).json({ message: "Error al registrar la solicitud" });
                 } else {
-                    res.send({ message: "Solicitud registrada correctamente" });
+                    res.redirect('/exito.html');
+                    //res.json({ message: "Solicitud registrada correctamente" });
                 }
             });
         } else {
-            res.status(404).send({ message: "Profesor no encontrado" });
+            res.redirect('/error.html');
+            //res.status(404).json({ message: "Profesor no encontrado" });
         }
     });
 });
@@ -102,7 +106,4 @@ function obtenerHoraActual() {
 }
 
 const horaActual = obtenerHoraActual();
-
-
-// ::::: PRUEBAS VALIDACIÓN PROFESOR ::::::
 

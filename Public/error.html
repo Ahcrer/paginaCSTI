@@ -19,34 +19,16 @@
 <!-- Header -->
 <header>
   <img src="imagenes/csti_logo.png" alt="logo csti">
-  <h1>Historial de Solicitudes</h1>
+  <h1>Formulario de solicitud</h1>
   <img src="imagenes/escudo_unison.png" alt="logo unison">
 
 </header>
 
-<!-- Contenido principal -->
-<div class="search-container">
-  <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Buscar por expediente">
-  <button id="searchButton" onclick="filterTable()">Buscar</button>
-</div>
-
-<table id="data-table" border="1">
-  <thead>
-  <tr>
-    <th>Problema</th>
-    <th>Aula</th>
-    <th>Estatus</th>
-    <th>Hora</th>
-  </tr>
-  </thead>
-  <tbody id="table-body">
-  <!-- Mensaje por defecto -->
-  <tr>
-    <td colspan="4" style="text-align:center;">Ingrese su expediente de profesor</td>
-  </tr>
-  </tbody>
-</table>
-
+<!-- Mensaje de error y botón -->
+<section id="mensaje-error">
+  <p>El expediente del profesor ingresado no es válido, pruebe de nuevo.</p>
+  <button onclick="location.href='index.html'">Volver a la página de formulario</button>
+</section>
 
 <!-- Footer -->
 <footer>

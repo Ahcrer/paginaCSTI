@@ -364,3 +364,37 @@ tbody tr:nth-child(even) {
 button {
     margin: 5px;
 }
+
+/* CSS ERROR */
+
+#mensaje-error {
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+#mensaje-error button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#mensaje-error button:hover {
+    background-color: #0056b3;
+}
+
+/* CSS EXITO */
+
+#mensaje-exito {
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #45a049;
+    background-color: #91cf91;
+    color: #000000;
+}
